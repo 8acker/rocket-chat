@@ -1,0 +1,15 @@
+version: '2'
+services:
+    rocket-chat:
+      build: .
+      ports:
+       - "3000:3000"
+      depends_on:
+       - mongose
+      links:
+       - mongose:mongo.db.lan
+    mongose:
+      image: sameersbn/mongodb:latest
+      ports:
+       - "27017:27017"
+      restart: always
